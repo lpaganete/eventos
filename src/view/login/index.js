@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './login.css';
 
 function Login() {
     return (
@@ -7,20 +7,23 @@ function Login() {
         <div className="login-content d-flex align-items-center">
             <form className="form-signin mx-auto">
                 <div className="text-center mb-4">
-                    <h1 className="h3 mb-3 font-weight-normal">Login</h1>
+                    <h1 className="h3 mb-3 font-weight-normal text-white font-weight-bold">Login</h1>
+                </div>
+                <input type="email" id="inputEmail" className="form-control my-2" placeholder="E-mail" />
+                <input type="password" id="inputPassword" className="form-control my-2" placeholder="Senha" />
+                <button className="btn btn-lg  btn-block btn-login" type="submit">Entrar</button>
+
+                <div className="msg-login text-white text-center my-5">
+                    <span><strong>WoW!</strong> Você está conectado! &#128526; </span>
+                    <br></br>
+                    <span><strong>Ops!</strong> Verifique se a senha ou usuário estão corretos! &#128546;</span>
                 </div>
 
-                <div className="form-label-group">
-                    <input type="email" id="inputEmail" className="form-control" placeholder="Email address" />
+                <div className="opcoes-login mt-5 text-center">
+                    <a href="#" className="mx-2">Recuperar Senha</a>
+                    <span className="text-white">&#9733;</span>
+                    <a href="#" className="mx-2">Quero Cadastrar </a>
                 </div>
-
-                <div className="form-label-group">
-                    <input type="password" id="inputPassword" className="form-control" placeholder="Password" />
-                </div>
-
-                <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                <p className="mt-5 mb-3 text-muted text-center">&copy; 2017-2020</p>
-
             </form>
         </div>
     )
