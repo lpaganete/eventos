@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
+import Navbar from '../../components/navbar/';
 
 import './usuario-novo.css';
 
@@ -48,30 +49,35 @@ function NovoUsuario() {
     }
 
     return (
-        <div className="form-cadastro">
-            <form className="text-center form-login mx-auto mt-5">
-                <h1 className="h3 mb-3 text-black font-weight-bold">Cadastro</h1>
 
-                <input onChange={(e) => setEmail(e.target.value)} type="email" className="form-control my-2" placeholder="E-mail" />
-                <input onChange={(e) => setSenha(e.target.value)} type="password" className="form-control my-2" placeholder="Senha" />
+        <>
+            <Navbar />
 
-                {
-                    carregando ? <div class="spinner-border text-danger" role="status">
-                        <span class="sr-only">Loading...</span></div>
-                        : <button onClick={Cadastrar} type="button" className="btn btn-lg btn-block mt-3 mb-5 btn-cadastro">Cadastrar</button>
-                }
+            <div className="form-cadastro">
+                <form className="text-center form-login mx-auto mt-5">
+                    <h1 className="h3 mb-3 text-black font-weight-bold">Cadastro</h1>
 
-                <div className="msg-login text-black text-center my-5">
+                    <input onChange={(e) => setEmail(e.target.value)} type="email" className="form-control my-2" placeholder="E-mail" />
+                    <input onChange={(e) => setSenha(e.target.value)} type="password" className="form-control my-2" placeholder="Senha" />
+
                     {
-                        msgTipo === 'sucesso' && <span><strong>WoW!</strong> Usuário cadastradao com sucesso! &#128526; </span>
+                        carregando ? <div class="spinner-border text-danger" role="status">
+                            <span class="sr-only">Loading...</span></div>
+                            : <button onClick={Cadastrar} type="button" className="btn btn-lg btn-block mt-3 mb-5 btn-cadastro">Cadastrar</button>
                     }
-                    {
-                        msgTipo === 'erro' && <span><strong>Ops!</strong> {msg} &#128533; </span>
-                    }
-                </div>
 
-            </form>
-        </div>
+                    <div className="msg-login text-black text-center my-5">
+                        {
+                            msgTipo === 'sucesso' && <span><strong>WoW!</strong> Usuário cadastradao com sucesso! &#128526; </span>
+                        }
+                        {
+                            msgTipo === 'erro' && <span><strong>Ops!</strong> {msg} &#128533; </span>
+                        }
+                    </div>
+
+                </form>
+            </div>
+        </>
     )
 }
 
