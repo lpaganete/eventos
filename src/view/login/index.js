@@ -38,7 +38,8 @@ function Login() {
             <form className="form-signin mx-auto">
 
                 <div className="text-center mb-4">
-                    <h1 className="h3 mb-3 font-weight-normal text-white font-weight-bold">Login</h1>
+                    <i class="far fa-smile-wink text-white fa-5x"></i>
+                    <h1 className="h3 mb-3 font-weight-normal text-white font-weight-bold mt-3">Login</h1>
                 </div>
 
                 <input onChange={(e) => setEmail(e.target.value)} type="email" id="inputEmail" className="form-control my-2" placeholder="E-mail" />

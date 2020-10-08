@@ -10,13 +10,13 @@ function Navbar() {
 
     return (
         <nav className="navbar navbar-expand-lg">
-            <span className="navbar-brand text-white font-weight-bold">Eventos</span>
+            <i class="far fa-smile-wink text-white fa-2x"></i>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars text-white"></i>
             </button>
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav">
+                <ul className="navbar-nav ml-2">
                     <li className="nav-item">
                         <Link className="nav-link" to="/">Home</Link>
                     </li>
