@@ -45,7 +45,7 @@ function Login() {
                 <input onChange={(e) => setEmail(e.target.value)} type="email" id="inputEmail" className="form-control my-2" placeholder="E-mail" />
                 <input onChange={(e) => setSenha(e.target.value)} type="password" id="inputPassword" className="form-control my-2" placeholder="Senha" />
 
-                <button onClick={logar} className="btn btn-lg  btn-block btn-login" type="button">Logar </button>
+                <button onClick={logar} className="btn btn-lg  btn-block btn-login" type="button">Logar</button>
 
                 <div className="msg-login text-white text-center my-5">
                     {
@@ -60,7 +60,7 @@ function Login() {
                 <div className="opcoes-login mt-5 text-center">
                     <Link to='usuariorecuperarsenha' className="mx-2">Recuperar Senha</Link>
                     <span className="text-white">&#9733;</span>
-                    <Link to='novousuario' className="mx-2">Quero Cadastrar </Link>
+                    <Link to='novousuario' className="mx-2">Quero Cadastrar</Link>
                 </div>
             </form>
         </div>
