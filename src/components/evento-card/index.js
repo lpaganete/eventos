@@ -1,26 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import firebase from '../../config/firebase';
 
 import './evento-card.css';
 
-function EventoCard() {
+function EventoCard({ id, img, titulo, detalhes, visualizacoes }) {
+
+    const [urlImagem, setUrlImagem] = useState();
+
+    useEffect(() => {
+        firebase.storage().ref(`imagens/${img}`).getDownloadURL().then(url => setUrlImagem(url));
+    });
+
     return (
 
         <div className="col-md-3 col-sm-12">
 
-            <img src="https://via.placeholder.com/150" className="card-img-top img-cartao" alt="Imagem do Evento" />
+            <img src={urlImagem} className="card-img-top img-cartao" alt="Imagem do Evento" />
 
             <div className="card-body">
 
-                <h5>Título do Evento</h5>
-                <p className="card-text text-justify">Ao contrário da crença popular, o Lorem Ipsum não é simplesmente texto aleatório. </p>
+                <h5>{titulo}</h5>
+                <p className="card-text text-justify">{detalhes}</p>
 
                 <div className="row rodape-card d-flex align-items-center">
                     <div className="col-6">
-                        <Link to='/' className="btn btn-sm btn-detalhes">+ detalhes</Link>
+                        <Link to={'/eventoetalhes/' + id} className="btn btn-sm btn-detalhes">+ detalhes</Link>
                     </div>
                     <div className="col-6 text-right">
-                        <i class="far fa-eye"></i><span>2019</span>
+                        <i class="far fa-eye mr-1"> </i><span>{visualizacoes}</span>
                     </div>
                 </div>
 
