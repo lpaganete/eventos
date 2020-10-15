@@ -19,6 +19,7 @@
 }
 
 .img-cartao {
-    max-height: 200px;
+    min-height: 120px;
+    max-height: 120px;
     min-width: 100%;
 }
