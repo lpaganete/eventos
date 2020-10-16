@@ -4,6 +4,10 @@
     max-height: 350px;
 }
 
+.titulo, .visualizacoes {
+    color: #6146a6;
+}
+
 .box-info {
     background-color: #6146a6;
     color: #fff;
