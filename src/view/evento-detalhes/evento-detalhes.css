@@ -11,6 +11,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 3px;
+}
+
+.box-info:hover {
+    border: 3px solid #f21667;
+    border-radius: 3px;
 }
 
 .btn-editar i {
