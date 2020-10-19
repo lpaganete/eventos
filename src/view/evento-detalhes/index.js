@@ -15,15 +15,19 @@ function EventoDetalhes(props) {
     const [carregando, setCarregando] = useState(1);
 
     useEffect(() => {
-        firebase.firestore().collection('eventos').doc(props.match.params.id).get().then(resultado => {
-            setEvento(resultado.data());
-
-            firebase.storage().ref(`imagens/${evento.foto}`).getDownloadURL().then(url => {
-                setUrlImg(url)
-                setCarregando(0);
+        if (carregando) {
+            firebase.firestore().collection('eventos').doc(props.match.params.id).get().then(resultado => {
+                setEvento(resultado.data());
+                firebase.firestore().collection('eventos').doc(props.match.params.id).update('visualizacoes', resultado.data().visualizacoes + 1)
+                firebase.storage().ref(`imagens/${resultado.data().foto}`).getDownloadURL().then(url => {
+                    setUrlImg(url)
+                    setCarregando(0);
+                });
             });
-        });
-    })
+        } else {
+            firebase.storage().ref(`imagens/${evento.foto}`).getDownloadURL().then(url => setUrlImg(url))
+        }
+    }, [])
 
 
     return (
@@ -39,7 +43,7 @@ function EventoDetalhes(props) {
                                 <img src={urlImg} className="img-banner" alt="banner" />
 
                                 <div className="col-12 text-right mt-1 visualizacoes">
-                                    <i class="far fa-eye mr-1"></i><span>{evento.visualizacoes}</span>
+                                    <i class="far fa-eye mr-1"></i><span>{evento.visualizacoes + 1}</span>
                                 </div>
 
                                 <h3 className="mx-auto mt-3 titulo"><strong>{evento.titulo}</strong></h3>
