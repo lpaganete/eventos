@@ -13,6 +13,13 @@ function EventoDetalhes(props) {
     const [urlImg, setUrlImg] = useState({});
     const usuarioLogado = useSelector(state => state.usuarioEmail);
     const [carregando, setCarregando] = useState(1);
+    const [excluido, setExcluido] = useState(0);
+
+    function remover() {
+        firebase.firestore().collection('eventos').doc(props.match.params.id).delete().then(() => {
+            setExcluido(1);
+        });
+    }
 
     useEffect(() => {
         if (carregando) {
@@ -33,6 +40,11 @@ function EventoDetalhes(props) {
     return (
         <>
             <Navbar />
+
+            {
+                excluido > 0 ? <Redirect to='/' /> : null
+            }
+
             <div className="container-fluid">
                 {
                     carregando ? <div className="row mt-5"> <div class="spinner-border text-danger mx-auto" role="status">
@@ -83,6 +95,12 @@ function EventoDetalhes(props) {
                                     : ''
                             }
 
+                            {
+                                usuarioLogado == evento.usuario ?
+                                    <button onClick={remover} type="button" className="btn btn-lg btn-block mt-3 mb-3 mx-2 btn-cadastro">Remover Evento</button>
+                                    : null
+                            }
+
                         </div>
                 }
             </div>
@@ -92,3 +110,5 @@ function EventoDetalhes(props) {
 }
 
 export default EventoDetalhes;
+
+
